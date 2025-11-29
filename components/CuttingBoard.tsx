@@ -16,12 +16,14 @@ export const CuttingBoard: React.FC<CuttingBoardProps> = ({ onComplete }) => {
   const finishCutting = () => {
     // Score based on distance from ideal cuts
     // Ideal is 10. 
-    // 0 cuts = 0 score.
-    // 10 cuts = 100 score.
-    // 20 cuts = 0 score.
     const diff = Math.abs(cuts - idealCuts);
-    // Lose 15 points per deviation
-    let score = Math.max(0, 100 - (diff * 15));
+    
+    // Lose 10 points per deviation (was 15, made it slightly easier)
+    // 10 cuts = 100
+    // 5 cuts = 50
+    // 15 cuts = 50
+    // 20 cuts = 0
+    let score = Math.max(0, 100 - (diff * 10));
     
     // Explicit 0 if no effort made
     if (cuts === 0) score = 0;
@@ -32,7 +34,7 @@ export const CuttingBoard: React.FC<CuttingBoardProps> = ({ onComplete }) => {
   return (
     <div className="flex flex-col items-center justify-center h-full space-y-8 animate-in fade-in duration-500">
       <h2 className="text-3xl font-bold text-amber-800">Slice the Bread!</h2>
-      <p className="text-amber-600">Aim for about {idealCuts} perfect slices.</p>
+      <p className="text-amber-600">Aim for about {idealCuts} slices.</p>
       
       <div className="relative w-64 h-64 flex items-center justify-center">
         {/* Bread Loaf */}
