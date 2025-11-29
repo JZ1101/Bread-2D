@@ -1,3 +1,4 @@
+
 export enum GamePhase {
   START = 'START',
   CUT = 'CUT',
@@ -10,6 +11,7 @@ export interface GameStats {
   sliceQuality: number; // 0-100
   toastLevel: number; // 0-100 (50 is perfect)
   butterCoverage: number; // 0-100
+  topping?: string;
 }
 
 export interface ChefFeedback {
